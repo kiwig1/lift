@@ -584,9 +584,9 @@
             // closedoor
             // 
             this.closedoor.Image = global::lift.Properties.Resources.doorclose;
-            this.closedoor.Location = new System.Drawing.Point(227, 0);
+            this.closedoor.Location = new System.Drawing.Point(228, 0);
             this.closedoor.Name = "closedoor";
-            this.closedoor.Size = new System.Drawing.Size(111, 103);
+            this.closedoor.Size = new System.Drawing.Size(108, 100);
             this.closedoor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.closedoor.TabIndex = 7;
             this.closedoor.TabStop = false;
@@ -596,7 +596,7 @@
             this.opendoor.Image = global::lift.Properties.Resources.dooropen;
             this.opendoor.Location = new System.Drawing.Point(0, 0);
             this.opendoor.Name = "opendoor";
-            this.opendoor.Size = new System.Drawing.Size(110, 103);
+            this.opendoor.Size = new System.Drawing.Size(108, 100);
             this.opendoor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.opendoor.TabIndex = 6;
             this.opendoor.TabStop = false;
