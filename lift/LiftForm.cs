@@ -87,11 +87,15 @@ namespace lift
         bool moovingdown = false;
         bool stoplift = false;
         int floorcounter = 0;
+        int persons = 0;
                    
-        private async void movement(int personfloor, int finishposition)
-        { 
+        private async Task movement(int personfloor, int finishposition)
+        {
             if (inmoove == false)
             {
+               
+
+
                 inmoove = true;
                 if (lift.Location.Y > personfloor)//к человеку
                 {
@@ -108,11 +112,15 @@ namespace lift
 
                     }
                     moovingup = false;
-                    closedoor.Hide();
-                    opendoor.Show();
-                    await Task.Delay(1000);
-                    closedoor.Show();
-                    opendoor.Hide();
+                    if (stoplift == false)
+                    {
+
+                        closedoor.Hide();
+                        opendoor.Show();
+                        await Task.Delay(1000);
+                        closedoor.Show();
+                        opendoor.Hide();
+                    }
 
                 }
                 else if (lift.Location.Y < personfloor)
@@ -129,13 +137,17 @@ namespace lift
                         floorcounter += 2;
                     }
                     moovingdown = false;
-                    closedoor.Hide();
-                    opendoor.Show();
-                    await Task.Delay(1000);
-                    closedoor.Show();
-                    opendoor.Hide();
+                    if (stoplift == false)
+                    {
+
+                        closedoor.Hide();
+                        opendoor.Show();
+                        await Task.Delay(1000);
+                        closedoor.Show();
+                        opendoor.Hide();
+                    }
                 }
-                if(personfloor==24) personon5.Hide();
+                if (personfloor == 24) personon5.Hide();
                 if (personfloor == 134) personon4.Hide();
                 if (personfloor == 244) personon3.Hide();
                 if (personfloor == 354) personon2.Hide();
@@ -153,12 +165,17 @@ namespace lift
                         lift.Location = new Point(lift.Location.X, lift.Location.Y - 2);
                         floorcounter += 2;
                     }
+                    persons++;
                     moovingup = false;
-                    closedoor.Hide();
-                    opendoor.Show();
-                    await Task.Delay(1000);
-                    closedoor.Show();
-                    opendoor.Hide();
+                    if (stoplift == false)
+                    {
+
+                        closedoor.Hide();
+                        opendoor.Show();
+                        await Task.Delay(1000);
+                        closedoor.Show();
+                        opendoor.Hide();
+                    }
                 }
                 else
                 {
@@ -173,139 +190,142 @@ namespace lift
                         lift.Location = new Point(lift.Location.X, lift.Location.Y + 2);
                         floorcounter += 2;
                     }
+                    persons++;
                     moovingdown = false;
-                    closedoor.Hide();
-                    opendoor.Show();
-                    await Task.Delay(1000);
-                    closedoor.Show();
-                    opendoor.Hide();
+                    if (stoplift == false)
+                    {
+                        closedoor.Hide();
+                        opendoor.Show();
+                        await Task.Delay(1000);
+                        closedoor.Show();
+                        opendoor.Hide();
+                    }
                 }
                 inmoove = false;
+
             }
-        
-        
 
          }
            
-        private void buttonfrom5to1_Click(object sender, EventArgs e)
+        private async void buttonfrom5to1_Click(object sender, EventArgs e)
+        {
+            personon5.Show();  
+            await movement(24, 464);
+        }
+
+        private async void buttonfrom5to2_Click(object sender, EventArgs e)
         {
             personon5.Show();
-            movement(24, 464);
+            await movement(24, 354);
         }
 
-        private void buttonfrom5to2_Click(object sender, EventArgs e)
+        private async void buttonfrom5to3_Click(object sender, EventArgs e)
         {
             personon5.Show();
-            movement(24, 354);
+            await movement(24, 244);
         }
 
-        private void buttonfrom5to3_Click(object sender, EventArgs e)
+        private async void buttonfrom5to4_Click(object sender, EventArgs e)
         {
             personon5.Show();
-            movement(24, 244);
+            await movement(24, 134);
         }
 
-        private void buttonfrom5to4_Click(object sender, EventArgs e)
-        {
-            personon5.Show();
-            movement(24, 134);
-        }
-
-        private void buttonfrom4to1_Click(object sender, EventArgs e)
+        private async void buttonfrom4to1_Click(object sender, EventArgs e)
         {
             personon4.Show();
-            movement(134, 464);
+            await movement(134, 464);
         }
 
-        private void buttonfrom4to2_Click(object sender, EventArgs e)
+        private async void buttonfrom4to2_Click(object sender, EventArgs e)
 
         {
             personon4.Show();
-            movement(134, 354);
+            await movement(134, 354);
         }
 
-        private void buttonfrom4tp3_Click(object sender, EventArgs e)
+        private async void buttonfrom4tp3_Click(object sender, EventArgs e)
         {
             personon4.Show();
-            movement(134, 244);
+            await movement(134, 244);
         }
 
-        private void buttonfrom4to5_Click(object sender, EventArgs e)
+        private async void buttonfrom4to5_Click(object sender, EventArgs e)
         {
             personon4.Show();
-            movement(134, 24);
+            await movement(134, 24);
         }
 
-        private void buttonfrom3to1_Click(object sender, EventArgs e)
+        private async void buttonfrom3to1_Click(object sender, EventArgs e)
         {
             personon3.Show();
-            movement(244, 464);
+            await movement(244, 464);
         }
 
-        private void buttonfrom3to2_Click(object sender, EventArgs e)
+        private async void buttonfrom3to2_Click(object sender, EventArgs e)
         {
             personon3.Show();
-            movement(244, 354);
+            await movement(244, 354);
         }
 
-        private void buttonfrom3to4_Click(object sender, EventArgs e)
+        private async void buttonfrom3to4_Click(object sender, EventArgs e)
         {
             personon3.Show();
-            movement(244, 134);
+            await movement(244, 134);
         }
 
-        private void buttonfrom3to5_Click(object sender, EventArgs e)
+        private async void buttonfrom3to5_Click(object sender, EventArgs e)
         {
             personon3.Show();
-            movement(244, 24);
+            await movement(244, 24);
         }
 
-        private void buttonfrom2to1_Click(object sender, EventArgs e)
+        private async void buttonfrom2to1_Click(object sender, EventArgs e)
         {
             personon2.Show();
-            movement(354,464 );
+            await movement(354,464 );
         }
 
-        private void buttonfrom2to3_Click(object sender, EventArgs e)
+        private async void buttonfrom2to3_Click(object sender, EventArgs e)
         {
             personon2.Show();
-            movement(354, 244);
+            await movement(354, 244);
         }
 
-        private void buttonfrom2to4_Click(object sender, EventArgs e)
+        private async void buttonfrom2to4_Click(object sender, EventArgs e)
         {
             personon2.Show();
-            movement(354,134);
+            await movement(354,134);
         }
 
-        private void buttonfrom2to5_Click(object sender, EventArgs e)
+        private async void buttonfrom2to5_Click(object sender, EventArgs e)
         {
             personon2.Show();
-            movement(354, 24);
+            await movement(354, 24);
         }
 
-        private void buttonfrom1to2_Click(object sender, EventArgs e)
+        private async void buttonfrom1to2_Click(object sender, EventArgs e)
         {
             personon1.Show();
-            movement(464, 354);
+            await movement(464, 354);
         }
 
-        private void buttonfrom1to3_Click(object sender, EventArgs e)
+        private async void buttonfrom1to3_Click(object sender, EventArgs e)
         {
             personon1.Show();
-            movement(464, 244);
+            await movement(464, 244);
         }
 
-        private void buttonfrom1to4_Click(object sender, EventArgs e)
+        private async void buttonfrom1to4_Click(object sender, EventArgs e)
         {
             personon1.Show();
-            movement(464, 134);
+            await movement(464, 134);
         }
 
-        private void buttonfrom1to5_Click(object sender, EventArgs e)
+        private async void buttonfrom1to5_Click(object sender, EventArgs e)
         {
             personon1.Show();
-            movement(464, 24);
+            await movement(464, 24);
         }
         private async Task stopfloor(int upperfloor,int underfloor)
         {
@@ -320,6 +340,7 @@ namespace lift
                         lift.Location = new Point(lift.Location.X, lift.Location.Y - 2);
                         floorcounter += 2;
                     }
+                    moovingup = false;
                 }
                 else if (moovingdown == true)
                 {
@@ -329,6 +350,7 @@ namespace lift
                         lift.Location = new Point(lift.Location.X, lift.Location.Y + 2);
                         floorcounter += 2;
                     }
+                    moovingdown = false;
                 }
             }
             inmoove = false;
@@ -350,7 +372,12 @@ namespace lift
                await stopfloor(24, 134);
             floorcounter = floorcounter / 110;
             string text=floorcounter.ToString();
-            MessageBox.Show("Лифт проехал этажей:"+ text, "Экстренная остановка");
+            string textpersons=persons.ToString();
+            opendoor.Show();
+            closedoor.Hide();
+            MessageBox.Show("Лифт проехал этажей:"+ text+ "\nЛифт отвез людей:" + textpersons, "Экстренная остановка");
+            opendoor.Hide();
+            closedoor.Show();
             stoplift = false;
             floorcounter = 0;
         }
